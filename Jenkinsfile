@@ -63,7 +63,7 @@ pipeline {
                      }
 
                      step([$class: 'KubernetesEngineBuilder',
-                           projectId: env.GOOGLE_CLOUD_PROJECT',
+                           projectId: env.GOOGLE_CLOUD_PROJECT,
                            clusterName: env.CLUSTER_NAME,
                            location: env.CLUSTER_LOCATION,
                            manifestPattern: '{deployment.yaml,service.yaml}',
