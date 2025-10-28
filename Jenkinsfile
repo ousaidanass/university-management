@@ -1,4 +1,4 @@
-def SERVICES = ['student-service', 'address-service']
+def SERVICES = ['config-server', 'api-gateway', 'student-service', 'address-service']
 
 pipeline {
     agent any
