@@ -7,7 +7,7 @@ pipeline {
         DOCKER_IMAGE_TAG="latest"
         REGISTRY_URL="us-central1-docker.pkg.dev"
         REGISTRY_NAME="university-management"
-        SERVICES = ['student-service', 'address-service']
+        def SERVICES = ['student-service', 'address-service']
     }
 
     stages {
