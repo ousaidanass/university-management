@@ -67,7 +67,7 @@ pipeline {
                            clusterName: env.CLUSTER_NAME,
                            location: env.CLUSTER_LOCATION,
                            manifestPattern: '{deployment.yaml,service.yaml}',
-                           credentialsId: env.GOOGLE_APPLICATION_CREDENTIALS,
+                           credentialsId: 'gcp-service-account',
                            verifyDeployments: true])
 
                      echo "Deployment Finished ..."
