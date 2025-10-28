@@ -49,6 +49,29 @@ pipeline {
                 }
             }
         }
+
+         stage('Deploy to GKE') {
+             steps {
+                 script {
+                     echo "Deployment started ..."
+
+                     for (service in SERVICES) {
+                         def imagePath = "${REGISTRY_URL}/${GOOGLE_CLOUD_PROJECT}/${REGISTRY_NAME}/${service}:${DOCKER_IMAGE_TAG}"
+                         sh "sed -i 's|${service}:latest|${imagePath}|' deployment.yaml"
+                     }
+
+                     step([$class: 'KubernetesEngineBuilder',
+                           projectId: env.GOOGLE_CLOUD_PROJECT,
+                           clusterName: env.CLUSTER_NAME,
+                           location: env.CLUSTER_LOCATION,
+                           manifestPattern: '{deployment.yaml,service.yaml}',
+                           credentialsId: env.CREDENTIALS_ID,
+                           verifyDeployments: true])
+
+                     echo "Deployment Finished ..."
+                 }
+             }
+         }
     }
 
 }

@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: config-server
-          image: us-central1-docker.pkg.dev/university-management-476414/university-management/config-server:latest
+          image: config-server:latest
           ports:
             - containerPort: 8888
 
@@ -46,9 +46,20 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: us-central1-docker.pkg.dev/university-management-476414/university-management/api-gateway:latest
+          image: api-gateway:latest
           ports:
             - containerPort: 9090
+          env:
+            - name: STUDENT_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: student_service_url
+            - name: ADDRESS_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: address_service_url
 
 ---
 
@@ -73,10 +84,30 @@ spec:
     spec:
       containers:
         - name: student-service
-          image: us-central1-docker.pkg.dev/university-management-476414/university-management/student-service:latest
+          image: student-service:latest
           ports:
             - containerPort: 8080
-
+          env:
+            - name: DATASOURCE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: datasource_url
+            - name: DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: datasource_username
+            - name: DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: datasource_password
+            - name: ADDRESS_SERVICE_URL_GATEWAY
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: address_service_url_gateway
 ---
 
 # Deployment for address-service
@@ -100,6 +131,22 @@ spec:
     spec:
       containers:
         - name: address-service
-          image: us-central1-docker.pkg.dev/university-management-476414/university-management/address-service:latest
+          image: address-service:latest
           ports:
             - containerPort: 8080
+          env:
+            - name: DATASOURCE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: datasource_url
+            - name: DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: datasource_username
+            - name: DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: datasource_password
