@@ -1,3 +1,5 @@
+def SERVICES = ['student-service', 'address-service']
+
 pipeline {
     agent any
 
@@ -7,7 +9,6 @@ pipeline {
         DOCKER_IMAGE_TAG="latest"
         REGISTRY_URL="us-central1-docker.pkg.dev"
         REGISTRY_NAME="university-management"
-        def SERVICES = ['student-service', 'address-service']
     }
 
     stages {
