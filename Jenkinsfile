@@ -66,7 +66,7 @@ pipeline {
                            projectId: env.GOOGLE_CLOUD_PROJECT,
                            clusterName: env.CLUSTER_NAME,
                            location: env.CLUSTER_LOCATION,
-                           manifestPattern: 'deployment.yaml,service.yaml',
+                           manifestPattern: '*.yaml',
                            credentialsId: 'gcp-service-account-key',
                            verifyDeployments: true])
 
