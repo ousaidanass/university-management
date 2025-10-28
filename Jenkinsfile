@@ -1,7 +1,12 @@
 def SERVICES = ['student-service', 'address-service']
 
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3.9.9-eclipse-temurin-21'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
 
     environment {
         GOOGLE_APPLICATION_CREDENTIALS=credentials('gcp-service-account	')
