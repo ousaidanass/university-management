@@ -16,7 +16,7 @@ pipeline {
         stage("Build Maven Modules") {
             steps {
                 echo 'Building all Maven modules...'
-                sh 'mvn clean package -DskipTests -Dmaven.repo.local=/tmp/.m2/repository'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
