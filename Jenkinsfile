@@ -4,7 +4,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3.9.9-eclipse-temurin-21'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
+            args '-v /var/run/docker.sock:/var/run/docker.sock -v $HOME/.m2:/root/.m2'
         }
     }
 
@@ -21,7 +21,7 @@ pipeline {
         stage("Build Maven Modules") {
             steps {
                 echo 'Building all Maven modules...'
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn clean package -DskipTests -Dmaven.repo.local=/tmp/.m2/repository'
             }
         }
 
