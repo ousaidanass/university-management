@@ -63,14 +63,15 @@ pipeline {
                      }
 
                      def manifests = ['deployment.yaml', 'service.yaml']
-                     step([$class: 'KubernetesEngineBuilder',
-                           projectId: env.GOOGLE_CLOUD_PROJECT,
-                           clusterName: env.CLUSTER_NAME,
-                           location: env.CLUSTER_LOCATION,
-                           manifestPattern: manifests,
-                           credentialsId: 'gcp-service-account-key',
-                           verifyDeployments: true])
-
+                     for (manifest in manifests) {
+                         step([$class: 'KubernetesEngineBuilder',
+                               projectId: env.GOOGLE_CLOUD_PROJECT,
+                               clusterName: env.CLUSTER_NAME,
+                               location: env.CLUSTER_LOCATION,
+                               manifestPattern: manifest,
+                               credentialsId: 'gcp-service-account-key',
+                               verifyDeployments: true])
+                    }
                      echo "Deployment Finished ..."
                  }
              }
