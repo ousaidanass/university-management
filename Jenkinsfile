@@ -4,7 +4,7 @@ pipeline {
     agent any
 
     environment {
-        GOOGLE_APPLICATION_CREDENTIALS=credentials('gcp-service-account	')
+        GOOGLE_APPLICATION_CREDENTIALS=credentials('gcp-service-account')
         GOOGLE_CLOUD_PROJECT=credentials('gcp-project-id-university-management')
         DOCKER_IMAGE_TAG="latest"
         REGISTRY_URL="us-central1-docker.pkg.dev"
