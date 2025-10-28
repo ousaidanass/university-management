@@ -62,11 +62,12 @@ pipeline {
                          sh "sed -i 's|${service}:latest|${imagePath}|' deployment.yaml"
                      }
 
+                     def manifests = ['deployment.yaml', 'service.yaml']
                      step([$class: 'KubernetesEngineBuilder',
                            projectId: env.GOOGLE_CLOUD_PROJECT,
                            clusterName: env.CLUSTER_NAME,
                            location: env.CLUSTER_LOCATION,
-                           manifestPattern: '*.yaml',
+                           manifestPattern: manifests,
                            credentialsId: 'gcp-service-account-key',
                            verifyDeployments: true])
 
