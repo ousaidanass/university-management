@@ -7,8 +7,7 @@ spec:
     app: config-server
     project: university-management
   ports:
-    - protocol: TCP
-      port: 8888
+    - port: 8888
       targetPort: 8888
   type: ClusterIP
 
@@ -22,8 +21,7 @@ spec:
     app: api-gateway
     project: university-management
   ports:
-    - protocol: TCP
-      port: 9090
+    - port: 9090
       targetPort: 9090
   type: LoadBalancer
 
@@ -38,8 +36,7 @@ spec:
     app: api-gateway
     project: university-management
   ports:
-    - protocol: TCP
-      port: 9090
+    - port: 9090
       targetPort: 9090
   type: ClusterIP
 
@@ -54,8 +51,7 @@ spec:
     app: student-service
     project: university-management
   ports:
-    - protocol: TCP
-      port: 8080
+    - port: 8080
       targetPort: 8080
   type: ClusterIP
 
@@ -69,7 +65,6 @@ spec:
     app: address-service
     project: university-management
   ports:
-    - protocol: TCP
-      port: 8080
+    - port: 8080
       targetPort: 8080
   type: ClusterIP
