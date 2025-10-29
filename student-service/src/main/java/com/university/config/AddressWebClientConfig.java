@@ -13,6 +13,6 @@ public class AddressWebClientConfig {
 
     @Bean
     public WebClient webClient() {
-       return WebClient.builder().baseUrl(addressServiceUrl).build();
+       return WebClient.builder().baseUrl(addressServiceUrl + "/address-service").build();
     }
 }
