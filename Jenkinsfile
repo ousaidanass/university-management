@@ -9,7 +9,7 @@ pipeline {
         DOCKER_IMAGE_TAG="latest"
         REGISTRY_URL="us-central1-docker.pkg.dev"
         REGISTRY_NAME="university-management"
-        CLUSTER_NAME="university-management"
+        CLUSTER_NAME="university-management-server"
         CLUSTER_LOCATION="us-central1-a"
     }
 
