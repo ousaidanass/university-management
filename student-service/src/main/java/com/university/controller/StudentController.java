@@ -2,6 +2,7 @@ package com.university.controller;
 
 
 import com.university.dto.CreateStudentRequest;
+import com.university.dto.StudentCretionInitiatedDto;
 import com.university.dto.StudentDto;
 import com.university.service.StudentService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ public class StudentController {
 	private final StudentService studentService;
 	
 	@PostMapping("/create")
-	public StudentDto createStudent (@RequestBody CreateStudentRequest createStudentRequest) {
+	public StudentCretionInitiatedDto createStudent (@RequestBody CreateStudentRequest createStudentRequest) {
 		return studentService.createStudent(createStudentRequest);
 	}
 	

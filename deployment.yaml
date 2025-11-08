@@ -59,6 +59,11 @@ spec:
                 secretKeyRef:
                   name: university-management-secret
                   key: address_service_url
+            - name: CONFIG_SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: config_server_url
 
 ---
 
@@ -107,6 +112,16 @@ spec:
                 secretKeyRef:
                   name: university-management-secret
                   key: address_service_url_gateway
+            - name: CONFIG_SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: config_server_url
+            - name: KAFKA_SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: kafka_server_url
 ---
 
 # Deployment for address-service
@@ -149,3 +164,13 @@ spec:
                 secretKeyRef:
                   name: university-management-secret
                   key: datasource_password
+            - name: CONFIG_SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: config_server_url
+            - name: KAFKA_SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: university-management-secret
+                  key: kafka_server_url

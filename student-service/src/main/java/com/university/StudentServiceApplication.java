@@ -8,7 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"com.university.controller", "com.university.service", "com.university.config", "com.university.advice", "com.university.client"})
+@ComponentScan({"com.university.controller", "com.university.service", "com.university.config", "com.university.advice", "com.university.client",
+        "com.university.kafka.producer", "com.university.kafka.consumer"})
 @EntityScan("com.university.entity")
 @EnableJpaRepositories("com.university.repository")
 public class StudentServiceApplication {

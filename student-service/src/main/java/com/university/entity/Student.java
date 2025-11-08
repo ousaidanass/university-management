@@ -11,7 +11,7 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Long id;
+	private long id;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -22,7 +22,7 @@ public class Student {
 	@Column(name = "email")
 	private String email;
 
-	@Column(name="address_id")
-	private long addressId;
+	@Column(name = "address_id")
+	private Long addressId;
 	
 }
